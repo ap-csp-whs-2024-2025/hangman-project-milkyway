@@ -20,10 +20,18 @@ bool getHint(std::string secret, char guessLetter)
 
     // The procedure should return true if the letter was in the word,
     // and return false if the letter was not in the word.
+    
+    
+    for each (int i = 0 i; i + 1) 
+    if (guessLetter == secret[curr_index])
+    {
+        hint[curr_index] = guessLetter;
+    }
+    curr_index + 1;
+
+    
     return false;
-}
-
-
+} 
 int main()
 {
     srand(time(0)); // seeding the random number generator
@@ -33,26 +41,25 @@ int main()
         "education",
         "solution",
         "mountain",
-        "platinum",
+        "thypham",
+        "alphabet",
         "qlphabet",
-        "necklace",
         "elevator",
         "diamonds",
         "fragrant",
+        "fragrant",
         "velocity",
-        "graduate",
         "nebraska",
         "tropical",
         "evidence",
         "involved",
         "shopping",
-        "baseball",
-        "kangaroo",
-        "horrible",
+        "charlies",
+        "amongus",
+        "milkyway",
         "animals"
     };
     
-    // answer is a random word from the word bank
     std::string answer = wordList[rand() % length(wordList)];
     char letterGuess;
     std::string wordGuess = "";
@@ -64,6 +71,8 @@ int main()
     {
         std::cout << "\nEnter your guess: ";
         std::cin >> letterGuess;
+
+        
         
         // TODO: Write code that displays the hint; you can either manually display or use the
         // custom display procedure that I wrote for you
@@ -73,11 +82,12 @@ int main()
             lives = lives - 1;
             // TODO: Update hangman person if you are using a hangman person
         }
-        
+        std::cout << "number of lives: " << lives <<
+        display(hint);
 
         // TODO: Write code below that asks you whether you want to guess the word
         // and allow the user to guess the word using the variable wordGuess
-        std::cout << "Would you like to guess the word (y/n)?\n";
+        std::cout << "Would you like to guess the word (y/n)?\n"; 
         
     }
 
