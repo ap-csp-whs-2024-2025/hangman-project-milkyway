@@ -11,7 +11,7 @@
 #include <string>    // std::string, std::getline
 #include <vector>    // std::vector
 
-std::vector<std::string> hint = std::vector<std::string>(8, "_");    // Note that hint is globally available; we want it to be like this for this project
+std::vector<std::string> hint =  std::vector<std::string>(8, "_");  // Note that hint is globally available; we want it to be like this for this project
 
 bool getHint(std::string secret, char guessLetter)
 {
@@ -20,18 +20,28 @@ bool getHint(std::string secret, char guessLetter)
 
     // The procedure should return true if the letter was in the word,
     // and return false if the letter was not in the word.
-    
-    
-    for each (int i = 0 i; i + 1) 
-    if (guessLetter == secret[curr_index])
-    {
-        hint[curr_index] = guessLetter;
-    }
-    curr_index + 1;
 
+    bool getHint(std::string secret, char guessLetter)
+    {
+        // TODO: Write code that updates the hint based on the secret
+        // and based on the guess letter.  Use the hint from above.
     
-    return false;
-} 
+        // The procedure should return true if the letter was in the word,
+        // and return false if the letter was not in the word.
+    
+        std::vector<std::string>hint = std::vector<std::string>(secret.length(), "_");
+        bool correct = false;
+        for(int i = 0; i < secret.length(); i++) //assistance from ai for loop: i starts at zero which is the first value of the list secret. i < length of list so that i doesn't go out of bounds. i++ means it will add one each time so no need for curr_index
+        {
+            if (guessLetter == secret[i])
+            {
+                hint[i] = guessLetter; //letter is replaced in index in hint list where it corresponds with index at secret list 
+                correct = true;
+            }
+        }
+    } 
+}   return correct;
+
 int main()
 {
     srand(time(0)); // seeding the random number generator
