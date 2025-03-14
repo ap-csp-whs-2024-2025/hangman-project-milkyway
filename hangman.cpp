@@ -11,7 +11,7 @@
 #include <string>    // std::string, std::getline
 #include <vector>    // std::vector
 
-std::vector<std::string> hint = std::vector<std::string>(8, "_");    // Note that hint is globally available; we want it to be like this for this project
+std::vector<std::string> hint; // Note that hint is globally available; we want it to be like this for this project ; seen everywhere, no need to make 
 
 bool getHint(std::string secret, char guessLetter)
 {
@@ -20,10 +20,21 @@ bool getHint(std::string secret, char guessLetter)
 
     // The procedure should return true if the letter was in the word,
     // and return false if the letter was not in the word.
-    return false;
-}
+
+    bool isletter = false;
+    for(int i = 0; i < secret.length(); i++) //assistance from ai for loop: i starts at zero which is the first value of the list secret. i < length of list so that i doesn't go out of bounds. i++ means it will add one each time so no need for curr_index
+    {
+        if (guessLetter == secret[i])
+        {
+            hint[i] = guessLetter; //letter is replaced in index in hint list where it corresponds with index at secret list ; for loop only checks elements, so make sure it has an index to know where to replace it or else it will appen 
+            isletter = true;
+        }
+    }
+    return isletter;
+}   
 
 
+   
 int main()
 {
     srand(time(0)); // seeding the random number generator
@@ -33,37 +44,40 @@ int main()
         "education",
         "solution",
         "mountain",
-        "platinum",
+        "thypham",
+        "alphabet",
         "qlphabet",
-        "necklace",
         "elevator",
         "diamonds",
         "fragrant",
+        "fragrant",
         "velocity",
-        "graduate",
         "nebraska",
         "tropical",
         "evidence",
         "involved",
         "shopping",
-        "baseball",
-        "kangaroo",
-        "horrible",
+        "charlies",
+        "amongus",
+        "milkyway",
         "animals"
     };
     
-    // answer is a random word from the word bank
     std::string answer = wordList[rand() % length(wordList)];
+    hint = std::vector<std::string>(answer.length(), "_");
+
     char letterGuess;
     std::string wordGuess = "";
     int lives = 10;
 
     std::cout << "Welcome to Hangman!\n";
     
-    while (true)    // TODO: update this condition to run when the game should be played
+    while (wordGuess != answer && lives >= 0)   // TODO: update this condition to run when the game should be played
     {
         std::cout << "\nEnter your guess: ";
         std::cin >> letterGuess;
+
+        
         
         // TODO: Write code that displays the hint; you can either manually display or use the
         // custom display procedure that I wrote for you
@@ -73,11 +87,18 @@ int main()
             lives = lives - 1;
             // TODO: Update hangman person if you are using a hangman person
         }
-        
+        std::cout << "number of lives: " << lives << std::endl;
+        display(hint);
 
         // TODO: Write code below that asks you whether you want to guess the word
         // and allow the user to guess the word using the variable wordGuess
-        std::cout << "Would you like to guess the word (y/n)?\n";
+        std::cout << "Would you like to guess the word (y/n)?\n"; 
+        std::string user_input; 
+        std::cin >> user_input;
+        if(user_input != "y")
+        {
+            
+        }
         
     }
 
