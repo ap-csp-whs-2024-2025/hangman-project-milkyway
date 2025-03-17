@@ -46,15 +46,15 @@ int main()
         "mountain",
         "thypham",
         "alphabet",
-        "qlphabet",
+        "sunjae",
         "elevator",
-        "diamonds",
-        "fragrant",
-        "fragrant",
+        "drsarah",
+        "lemonade",
+        "ghost",
         "velocity",
         "nebraska",
         "tropical",
-        "evidence",
+        "mrnguyen",
         "involved",
         "shopping",
         "charlies",
@@ -69,10 +69,12 @@ int main()
     char letterGuess;
     std::string wordGuess = "";
     int lives = 10;
+    
 
     std::cout << "Welcome to Hangman!\n";
+    std::cout << "The answer is " << answer << std::endl;
     
-    while (wordGuess != answer && lives >= 0)   // TODO: update this condition to run when the game should be played
+    while (wordGuess != answer && lives > 0)   // TODO: update this condition to run when the game should be played
     {
         std::cout << "\nEnter your guess: ";
         std::cin >> letterGuess;
@@ -91,17 +93,25 @@ int main()
         display(hint);
 
         // TODO: Write code below that asks you whether you want to guess the word
-        // and allow the user to guess the word using the variable wordGuess
-        std::cout << "Would you like to guess the word (y/n)?\n"; 
-        std::string user_input; 
-        std::cin >> user_input;
-        if(user_input != "y")
+        // and allow the user to guess the word using the variable wordGuess 
+        char choice;
+        std::cout << "Would you like to guess the word (y/n)?\n";
+        std::cin >> choice;
+        if(choice == 'y')
         {
-            
+            std::cout << "Enter word guess: ";
+            std::cin >> wordGuess;
         }
-        
     }
 
-    std::cout << "Some winning or losing message here";
+    if (wordGuess == answer)
+    {
+        std::cout << "Congratulations! You guessed the word: " << answer << std::endl;
+    }
+    else{
+        std::cout << "Game over! The correct word was: " << answer << std::endl;
+    }
+
+    std::cout << "lol";
     return 0;
 }
